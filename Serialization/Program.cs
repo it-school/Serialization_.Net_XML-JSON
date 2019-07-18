@@ -1,12 +1,15 @@
-﻿namespace Serialization
+﻿using System;
+
+namespace Serialization
 {
     class SerializeExample
     {
         static void Main(string[] args)
         {
-            Book book = new Book { title = "Book example" };
+            Book book = new Book { title = "Book example 1" };
             Serializer.WriteXML(book);
-            Serializer.ReadXML();
+            Book readbook = (Book)Serializer.ReadXML();
+            Console.WriteLine(readbook.title);
         }
     }
 }
