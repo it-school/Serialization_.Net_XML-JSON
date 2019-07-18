@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Serialization
 {
@@ -11,7 +12,7 @@ namespace Serialization
 
             //var path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "//book.xml";
             var path = @"d:\txt\book.xml";
-            System.IO.FileStream file = System.IO.File.Create(path);
+            FileStream file = File.Create(path);
 
             writer.Serialize(file, overview);
             file.Close();
