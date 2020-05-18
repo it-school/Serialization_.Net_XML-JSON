@@ -22,32 +22,29 @@ namespace Serialization
         public static Object ReadXML()
         {
             System.Xml.Serialization.XmlSerializer reader = new System.Xml.Serialization.XmlSerializer(typeof(Book));
-            System.IO.StreamReader file = new System.IO.StreamReader(@"d:\book.xml");
+            StreamReader file = new System.IO.StreamReader(@"d:\book.xml");
             Book overview = (Book)reader.Deserialize(file);
             file.Close();
             return overview;
         }
 
+        public static void WriteJSON(Object obj, string path = @"d:\book.json") // сохранение данных
+        {
+            StreamWriter file = new StreamWriter(path);
+            string result = JsonConvert.SerializeObject(obj);
+            file.Write(result);
+            file.Close();
+        }
+        public static Object ReadJSON(string path = @"d:\book.json")      // запись данных
+        {
+            StreamReader file = new System.IO.StreamReader(path);
+            FileStream fs = new FileStream("book.json", FileMode.OpenOrCreate);
 
-        //public  static async void WriteJSON(Object obj) // сохранение данных
-        //{
-        //    using (FileStream fs = new FileStream("user.json", FileMode.OpenOrCreate))
-        //    {
-        //        Book book = new Book();
-        //        await JsonSerializer.SerializeAsync<Book>(fs, book);
-        //        Console.WriteLine("Data has been saved to file");
-        //    }
-        //}
-        //public static async Object ReadJSON()      // запись данных
-        //{
-        //    Object result = null;
-        //    using (FileStream fs = new FileStream("book.json", FileMode.OpenOrCreate))
-        //    {
-        //        result = await JsonSerializer.DeserializeAsync<Book>(fs);
-        //        Console.WriteLine($"Name: {restoredPerson.Name}  Age: {restoredPerson.Age}");
-        //    }
+            Object result = JsonConvert.DeserializeObject(file.ReadToEnd());                
 
-        //    return result;
-        //}
+            file.Close();
+
+            return result;
+        }
     }
 }
