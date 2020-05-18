@@ -17,6 +17,7 @@ namespace Serialization
 
 
             // JSON serialization / deserialization
+            // https://www.newtonsoft.com/json
             Serializer.WriteJSON(book, @"d:\book.json");
             Console.WriteLine(  Serializer.ReadJSON(@"d:\book.json"));
         }
