@@ -2,10 +2,11 @@
 
 namespace Serialization
 {
+    [Serializable]
     public class Book
     {
-        private String title;
-        private int pages;
+        public string Title { get; set; }
+        public int Pages { get; set; }
 
         public Book()
         {
@@ -13,13 +14,13 @@ namespace Serialization
 
         public Book(string title, int pages)
         {
-            this.title = title;
-            this.pages = pages;
+            Title = title;
+            Pages = pages;
         }
 
         public override string ToString()
         {
-            return title + "  " + pages;
+            return Title + "  " + Pages;
         }
     }
 }

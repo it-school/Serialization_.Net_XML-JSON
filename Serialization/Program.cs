@@ -6,10 +6,14 @@ namespace Serialization
     {
         static void Main(string[] args)
         {
-            Book book = new Book("Book example 1", 100);
+            Book book = new Book("Book (example 1)", 512);
             Serializer.WriteXML(book);
-            Book readbook = (Book)Serializer.ReadXML();
-            Console.WriteLine(readbook);
+            
+            book = null;
+            book = (Book)Serializer.ReadXML();
+            Console.WriteLine(book);
+
+
         }
     }
 }
